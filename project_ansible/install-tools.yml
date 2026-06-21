@@ -1,0 +1,13 @@
+---
+- hosts: linux
+  become: yes
+
+  tasks:
+    - name: Install Packages
+      apt:
+        name:
+           - git
+           - curl
+           - vim
+
+        state: present
