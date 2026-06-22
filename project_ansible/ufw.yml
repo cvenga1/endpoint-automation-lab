@@ -1,0 +1,17 @@
+---- 
+- name: UFW Firewall
+  hosts: local
+  become: yes  # run as sudo
+
+ # ── Ensure UFW firewall is installed ─────────────────────────
+    - name: Install UFW firewall
+      apt:
+        name: ufw
+        state: present
+        update_cache: yes
+
+    # ── Allow SSH through the firewall ───────────────────────────
+    - name: Allow SSH in UFW
+      ufw:
+        rule: allow
+        name: OpenSSH
